@@ -1,6 +1,6 @@
 const api = require('express').Router();
 const fs = require('fs');
-const uuid = require('uuid');
+const uuidv4 = require('uuid');
 api.get('/api/notes', (req, res) => {
     fs.readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
@@ -12,7 +12,7 @@ api.post('/api/notes', (req, res) => {
 
     if (req.body) {
         const newNote = {
-            id: uuid(),
+            id: uuidv4(),
             title: req.body.title,
             text: req.body.text,
         };
