@@ -12,5 +12,5 @@ app.use(express.static('public'));
 app.use(html);
 app.use(api);
 
-app.listen(PORT, () => console.log('App listening on http://localhost:${PORT}')
+app.listen(PORT, () => console.log(`App listening on http://localhost:${PORT}`)
 );
