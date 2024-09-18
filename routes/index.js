@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-const { UUIDV4 } = require('sequelize');
+const { v4: uuidv4 } = require('uuid');
 
 router.get('/api/notes', async (req, res) => {
 const dbJson = await JSON.parse(fs.readFileSync("db/db.json", "utf8"));
@@ -21,6 +21,14 @@ router.post('/api/notes', (req, res) => {
     return res.status(201).json({
         status: "successful",
         data: newNote,
+    });
+});
+
+router.delete('/api/notes/:id', (req, res) => {
+    let data = fs.readFileSync("db/db.json", "utf8");
+    const dataJson = JSON.parse(data);
+    const noteIndex = dataJson.findIndex((note) => {
+        return note.id === req.params.id
     });
 });
 
