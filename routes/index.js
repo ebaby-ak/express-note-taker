@@ -30,6 +30,8 @@ router.delete('/api/notes/:id', (req, res) => {
     const noteIndex = dataJson.findIndex((note) => {
         return note.id === req.params.id
     });
+    fs.writeFileSync("db/db.json", JSON.stringify(noteIndex));
+    res.json("Note deleted successfully");
 });
 
 module.exports = router;
