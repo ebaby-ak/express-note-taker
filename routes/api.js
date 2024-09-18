@@ -1,7 +1,8 @@
-const api = require('express').Router();
+const router = require('express').Router();
 const fs = require('fs');
 const uuidv4 = require('uuid');
-api.get('/api/notes', (req, res) => {
+
+router.get('/api/notes', (req, res) => {
     fs.readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
@@ -23,4 +24,4 @@ api.post('/api/notes', (req, res) => {
     }
 });
 
-module.exports = api;
+module.exports = router;
