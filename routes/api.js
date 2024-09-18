@@ -6,7 +6,7 @@ router.get('/api/notes', (req, res) => {
     fs.readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-api.post('/api/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
     console.log(req.body);
 
     const {title, text, id} = req.body;
