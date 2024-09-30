@@ -8,9 +8,13 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(html);
+
 app.use(api);
+
+app.use(express.static('public'));
+
+app.use(html);
+
 
 app.listen(PORT, () => console.log(`App listening on http://localhost:${PORT}`)
 );
