@@ -19,6 +19,7 @@ router.post("/api/notes", (req, res) => {
   };
   dbJson.push(newNote);
   fs.writeFileSync(dbPath, JSON.stringify(dbJson));
+  res.json(dbJson);
 
   return res.status(201).json({
     status: "successful",
@@ -29,8 +30,8 @@ router.post("/api/notes", (req, res) => {
 router.delete("/api/notes/:id", (req, res) => {
   let data = fs.readFileSync(dbPath, "utf8");
   const dataJson = JSON.parse(data);
-  const noteIndex = dataJson.findIndex((note) => 
-    note.id === req.params.id);
+
+  const noteIndex = dataJson.findIndex((note) => note.id === req.params.id);
 
   fs.writeFileSync(dbPath, JSON.stringify(noteIndex));
   res.json("Note deleted successfully");
